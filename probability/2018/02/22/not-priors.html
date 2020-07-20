@@ -134,8 +134,8 @@ in the larger population.</p>
 
 <p><img src="/notes/images/PRML_Figure1.4d.png" alt="" title="Overfitting: the red curve is
 a 9th-order polynomial fit to the 9 data points in blue, which were generated
-according to the green curve. From Bishop's [Pattern Recognition and Machine
-Learning][prml]." /></p>
+according to the green curve. From Bishop's Pattern Recognition and Machine
+Learning." /></p>
 
 <p>Usually you add <em>regularization</em>, which means that you bias the training process
 to favor certain model parameters over others – say, those which cause the model
@@ -144,7 +144,7 @@ to make smoother predictions.</p>
 <p>This sounds sort of like having a Bayesian prior over model parameters where the
 models which make smoother predictions have higher prior probability. And
 indeed, people often talk about it that way, for instance in scikit-learn’s
-documentation for <a href="elasticnet">ElasticNet</a>.</p>
+documentation for <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html">ElasticNet</a>.</p>
 
 <p>But a real Bayesian prior is different! In some important ways. This confused me
 when I was first learning about Bayesian methods, so this post exists to explain
