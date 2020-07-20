@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Three ways to look at a matrix | Lu’s Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Three ways to look at a matrix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A matrix can represent a linear map, but it can also do other things." />
+<meta property="og:description" content="A matrix can represent a linear map, but it can also do other things." />
+<link rel="canonical" href="https://luanths.github.io/notes/math/2018/04/08/matrix-three-ways.html" />
+<meta property="og:url" content="https://luanths.github.io/notes/math/2018/04/08/matrix-three-ways.html" />
+<meta property="og:site_name" content="Lu’s Notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-04-08T00:00:00-05:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://luanths.github.io/notes/math/2018/04/08/matrix-three-ways.html"},"description":"A matrix can represent a linear map, but it can also do other things.","@type":"BlogPosting","url":"https://luanths.github.io/notes/math/2018/04/08/matrix-three-ways.html","headline":"Three ways to look at a matrix","dateModified":"2018-04-08T00:00:00-05:00","datePublished":"2018-04-08T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/notes/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://luanths.github.io/notes/feed.xml" title="Lu's Notes" /><link rel="shortcut icon" type="image/x-icon" href="/notes/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Three ways to look at a matrix | Lu’s Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Three ways to look at a matrix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A matrix can represent a linear map, but it can also do other things." />
+<meta property="og:description" content="A matrix can represent a linear map, but it can also do other things." />
+<link rel="canonical" href="https://luanths.github.io/notes/math/2018/04/08/matrix-three-ways.html" />
+<meta property="og:url" content="https://luanths.github.io/notes/math/2018/04/08/matrix-three-ways.html" />
+<meta property="og:site_name" content="Lu’s Notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-04-08T00:00:00-05:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://luanths.github.io/notes/math/2018/04/08/matrix-three-ways.html"},"description":"A matrix can represent a linear map, but it can also do other things.","@type":"BlogPosting","url":"https://luanths.github.io/notes/math/2018/04/08/matrix-three-ways.html","headline":"Three ways to look at a matrix","dateModified":"2018-04-08T00:00:00-05:00","datePublished":"2018-04-08T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://luanths.github.io/notes/feed.xml" title="Lu's Notes" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/notes/">Lu&#39;s Notes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/notes/about/">About Me</a><a class="page-link" href="/notes/search/">Search</a><a class="page-link" href="/notes/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Three ways to look at a matrix</h1><p class="page-description">A matrix can represent a linear map, but it can also do other things.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-04-08T00:00:00-05:00" itemprop="datePublished">
+        Apr 8, 2018
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      9 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/notes/categories/#math">math</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#what-can-you-do-with-a-matrix">What can you do with a matrix?</a></li>
+<li class="toc-entry toc-h2"><a href="#a-matrix-as-a-bilinear-map">A matrix as a bilinear map</a></li>
+<li class="toc-entry toc-h2"><a href="#a-matrix-as-a-combination-of-outer-products">A matrix as a combination of outer products</a></li>
+<li class="toc-entry toc-h2"><a href="#some-things-you-can-do-with-matrices-and-what-they-mean">Some things you can do with matrices and what they mean</a></li>
+<li class="toc-entry toc-h2"><a href="#bonus-quantum-states-and-observables">Bonus: quantum states and observables</a></li>
+</ul><h2 id="what-can-you-do-with-a-matrix">
+<a class="anchor" href="#what-can-you-do-with-a-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>What can you do with a matrix?</h2>
+
+<p>A matrix can be used to represent at least three different things:</p>
+
+<ol>
+  <li>A linear map from vectors to vectors</li>
+  <li>A bilinear map from pairs of vectors to scalars</li>
+  <li>A combination of outer products of vectors</li>
+</ol>
+
+<p>The linear map is the most familiar, if you learned linear algebra the way I
+did. A matrix $M$ represents a linear map which acts according to multiplying a
+vector by that matrix, $T(v) = Mv$.</p>
+
+<p>For a while I only knew this way to think about matrices, and while it is the
+right way a lot of the time, sometimes people do use matrices to mean something
+else and it’s confusing to try to interpret them as linear maps. And sometimes
+it’s helpful to view the same matrix in multiple ways. So I’d like to write a
+little about other ways to look at a matrix.</p>
+
+<h2 id="a-matrix-as-a-bilinear-map">
+<a class="anchor" href="#a-matrix-as-a-bilinear-map" aria-hidden="true"><span class="octicon octicon-link"></span></a>A matrix as a bilinear map</h2>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Bilinear_map">bilinear map</a> is a function that takes two vectors, returns a
+vector, and is linear in each argument separately. For this post we’ll only
+consider bilinear maps that return 1-dimensional vectors, which are the same as
+scalars. Some familiar examples of these are the dot product and the cross
+product.</p>
+
+<p>If you have a $m$ by $n$ matrix $M$, you can define a bilinear map $T:
+\mathbb{R}^m \times \mathbb{R}^n \to \mathbb{R}$ by:</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>u</mi><mi>T</mi></msup><mi>M</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">T(u, v) = u^T M v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8913309999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span></span>
+
+<p>You can think of this as a sort of weighted product of $u$ and $v$, where the
+$(i,j)$ entry of $M$ is the weight to put on $u_i$ times $v_j$. (Exercise: show
+this by expanding the matrix-vector products.)</p>
+
+<p>The dot product is what you get if $M = I$. The cross product in three
+dimensions is given by the matrix</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo fence="true">(</mo><mtable rowspacing="0.15999999999999992em" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>1</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>1</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mn>1</mn></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr></mtable><mo fence="true">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix}
+0 &amp; 1 &amp; -1 \\
+-1 &amp; 0 &amp; 1 \\
+1 &amp; -1 &amp; 0 \\
+\end{pmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.60004em;vertical-align:-1.55002em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05002em;"><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎝</span></span></span><span style="top:-2.8100000000000005em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎜</span></span></span><span style="top:-4.05002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎛</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55002em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">1</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05em;"><span style="top:-4.21em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">1</span></span></span><span style="top:-3.0099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-1.8099999999999994em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5500000000000007em;"><span></span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.05002em;"><span style="top:-2.2500000000000004em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎠</span></span></span><span style="top:-2.8100000000000005em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎟</span></span></span><span style="top:-4.05002em;"><span class="pstrut" style="height:3.1550000000000002em;"></span><span class="delimsizinginner delim-size4"><span>⎞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.55002em;"><span></span></span></span></span></span></span></span></span></span></span></span>
+
+<p>A bilinear map can be used to define a quadratic function from vectors to
+scalars – a <a href="https://en.wikipedia.org/wiki/Quadratic_form">quadratic form</a> – by letting $u$ and $v$ be the
+same vector. This happens, for example, in the probability density of a normal
+distribution in multiple dimensions:</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>∝</mo><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mo>−</mo><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><msup><mo stretchy="false">)</mo><mi>T</mi></msup><msup><mi mathvariant="normal">Σ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(x) \propto \exp( -(x - \mu)^T \Sigma^{-1} (x - \mu) )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∝</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord">−</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.1413309999999999em;vertical-align:-0.25em;"></span><span class="mord mathdefault">μ</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord"><span class="mord">Σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.864108em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">μ</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span>
+
+<p>where $\mu$ is the mean and $\Sigma$ is the covariance. The thing in the
+exponent is a “product” of $x - \mu$ with itself, so this equation says that log
+density peaks at $x = \mu$, and it falls off quadratically in each direction at
+some rate determined by $\Sigma$.<sup id="fnref:psd"><a href="#fn:psd" class="footnote">1</a></sup></p>
+
+<p>If you have a $M$ which represents a linear map $\mathbb{R}^m \to \mathbb{R}^n$,
+you can “cast” it into a bilinear map: $u^T M v = u \cdot Mv$. That is, first
+apply the linear map to $v$ to get another vector $M v$, and then take the dot
+product of that with $u$.<sup id="fnref:abstract-bilinear"><a href="#fn:abstract-bilinear" class="footnote">2</a></sup></p>
+
+<h2 id="a-matrix-as-a-combination-of-outer-products">
+<a class="anchor" href="#a-matrix-as-a-combination-of-outer-products" aria-hidden="true"><span class="octicon octicon-link"></span></a>A matrix as a combination of outer products</h2>
+
+<p>Given a pair of vectors $u$ and $v$, the outer product $uv^T$ combines the two
+vectors in a bilinear way.</p>
+
+<p>If you have $uv^T$, you can determine the result of $u^T M v$ for any $M$. This
+is known as the <a href="https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/other-readings/chapter13.pdf">“trace trick”</a>, because you can prove it by using
+the trace operator, but you can also see it by writing out the matrix products:</p>
+
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>u</mi><mi>T</mi></msup><mi>M</mi><mi>v</mi><mo>=</mo><msub><mo>∑</mo><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><msub><mi>u</mi><mi>i</mi></msub><msub><mi>M</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><msub><mi>v</mi><mi>j</mi></msub><mo>=</mo><msub><mo>∑</mo><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><msub><mi>M</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><msub><mi>u</mi><mi>i</mi></msub><msub><mi>v</mi><mi>j</mi></msub><mo>=</mo><msub><mo>∑</mo><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><msub><mi>M</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><mo stretchy="false">(</mo><mi>u</mi><msup><mi>v</mi><mi>T</mi></msup><msub><mo stretchy="false">)</mo><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">u^T M v = \sum_{i,j} u_i M_{i,j} v_j = \sum_{i,j} M_{i,j} u_i v_j = \sum_{i,j} M_{i,j} (uv^T)_{i,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.185818em;vertical-align:-0.43581800000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16195399999999993em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.43581800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.185818em;vertical-align:-0.43581800000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16195399999999993em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.43581800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.277149em;vertical-align:-0.43581800000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16195399999999993em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.43581800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>_</p>
+
+<p>This also makes it clear that $M$ acts <em>linearly</em> on the elements of $uv^T$.</p>
+
+<p>It is useful to consider the vector space that you get by allowing linear
+combinations of $uv^T$’s. A member of this space is a summary of one or more
+vector-pairs that lets you compute the sum of any bilinear function over those
+vector-pairs.<sup id="fnref:tensors"><a href="#fn:tensors" class="footnote">3</a></sup></p>
+
+<p>The example I have in mind here is covariance matrices. If $x$ is a random
+vector with zero mean, its covariance matrix is $E[xx^T]$. This matrix lets you
+compute the expectation of any quadratic function of $x$, that is, anything that
+looks like $E[x^T M x]$.<sup id="fnref:covar-basis-independent"><a href="#fn:covar-basis-independent" class="footnote">4</a></sup></p>
+
+<h2 id="some-things-you-can-do-with-matrices-and-what-they-mean">
+<a class="anchor" href="#some-things-you-can-do-with-matrices-and-what-they-mean" aria-hidden="true"><span class="octicon octicon-link"></span></a>Some things you can do with matrices and what they mean</h2>
+
+<p>Matrix multiplication:</p>
+
+<ul>
+  <li>
+    <p>If $A$ and $B$ are matrices representing linear maps, then $AB$ represents the
+linear map of $A$ composed with the linear map of $B$.</p>
+  </li>
+  <li>
+    <p>If $A$ represents a linear map and $B$ represents a bilinear map, $A^T B A$
+represents the bilinear map you get by applying $A$ to the each argument
+before applying $B$. $A^T B$ is the one which applies $A$ to the first
+argument only, and $B A$ applies $A$ to the second argument only.</p>
+  </li>
+  <li>
+    <p>If $A$ and $B$ represent linear maps, $A^T B$ represents the bilinear map you
+get by applying $A$ to the first argument and $B$ to the second argument, then
+taking a dot product.</p>
+  </li>
+</ul>
+
+<p>Transpose:</p>
+
+<ul>
+  <li>
+    <p>If $A$ is a linear map from $U$ to $V$, $A^T$ is a linear map from $V^<em>$ to
+$U^</em>$, where $V^*$ is the dual vector space of $V$: the space of linear maps
+from $V$ to scalars.</p>
+  </li>
+  <li>
+    <p>If $A$ is a bilinear map, $A^T$ is the bilinear map you get by switching the
+arguments. If $A$ is a symmetric matrix, its bilinear map is a symmetric
+function of its arguments.</p>
+  </li>
+  <li>
+    <p>If $A$ is a linear combination of outer products, $A^T$ is what you get if you
+did the outer products in the other order ($vu^T$ instead of $uv^T$).</p>
+  </li>
+</ul>
+
+<p>Eigenvectors:</p>
+
+<ul>
+  <li>
+    <p>An eigenvector $v$ of $A$, with eigenvalue $\lambda$, is a vector satisfying
+$Av = \lambda v$. That is, the linear map of $A$ acts on the vector $v$ by
+scaling it by $\lambda$.</p>
+  </li>
+  <li>
+    <p>If $A$ is a bilinear form, a right eigenvector $v$ of $A$ is a vector that has
+the property that for all $u$, $u^T A v = u^T \lambda v = \lambda (u \cdot
+v)$. A left eigenvector is the same thing but for the left argument. This
+property sounds like just a roundabout way to say $Av = \lambda v$ but it
+means that if you have an orthonormal basis of eigenvectors of $A$, it’s easy
+to describe what $A$ does in that basis.</p>
+  </li>
+</ul>
+
+<p>Diagonal:</p>
+
+<ul>
+  <li>
+    <p>A linear map whose matrix is a diagonal matrix is one that acts on each
+coordinate independently.</p>
+  </li>
+  <li>
+    <p>A bilinear form whose matrix is diagonal is one that acts on each coordinate
+of the two vectors independently; it has no “cross terms”.</p>
+  </li>
+</ul>
+
+<p>All of this except for diagonality is coordinate free, so it works the same if
+you change to a different basis. Some of it depends on the dot product, so it
+only makes sense if it makes sense to take a dot product. I think it’s worth
+noticing when you do something that depends on your choice of coordinates, or
+your choice of dot product, because it determines whether you can make these
+choices arbitrarily or if they matter.<sup id="fnref:pca"><a href="#fn:pca" class="footnote">5</a></sup></p>
+
+<h2 id="bonus-quantum-states-and-observables">
+<a class="anchor" href="#bonus-quantum-states-and-observables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bonus: quantum states and observables</h2>
+
+<p>(Disclaimer: I’m not a physicist and I don’t really know what I’m talking about)</p>
+
+<p>In quantum mechanics, an observable is represented by a linear operator $A$ that
+acts on the quantum state $\psi$. The idea is that you write $\psi$ as a linear
+combination of eigenstates of $A$, and in each eigenstate the value of $A$ is
+given by the corresponding eigenvalue, and when you observe $A$ the state
+collapses to one of the eigenstates.</p>
+
+<p>It always seemed a bit weird to me that the result of the linear operator $A$
+doesn’t have a physical meaning and is hardly ever talked about, as if the
+operator exists only to be a bag of eigenstates.</p>
+
+<p>However, the expectation value of $A$ in the state $\psi$ is $\langle \psi | A |
+\psi \rangle$ (which is basically $\psi^T A \psi$ in physicists’ notation). So,
+maybe another way to think of $A$ is as a bilinear map, which when applied to a
+quantum state gives the probability distribution of the observable in that state?</p>
+
+<p>If you have an eigendecomposition of $A$, then you can represent any quantum
+state as a linear combination of eigenstates, so that the distribution of the
+observable in that state is a linear combination of its distribution in each
+eigenstate. This explains why eigenstates are important.</p>
+
+<p>This also explains why you want to work with density matrices. The density
+matrix corresponding to $\psi$ is $| \psi \rangle \langle \psi |$, which is just
+the outer product of $\psi$ with itself. As we’ve seen, this is enough
+information to determine the distribution of any observable $A$. In density
+matrix land, you can take linear combinations of pure states to represent mixed
+states, and in a mixed state the distribution of any observable factors through
+as a linear combination of its distribution in each of the pure states.</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:psd">
+      <p>This description depends on the fact that covariance matrices are
+positive definite, which is basically a condition that the “product” of any
+vector with itself is not negative. <a href="#fnref:psd" class="reversefootnote">↩</a></p>
+    </li>
+    <li id="fn:abstract-bilinear">
+      <p>The same construction works with abstract vector spaces:
+if you have a linear map from $V$ to $W$, and $W$ is an inner product space,
+you can use that to construct a bilinear map from $V$ and $W$. <a href="#fnref:abstract-bilinear" class="reversefootnote">↩</a></p>
+    </li>
+    <li id="fn:tensors">
+      <p>What I’ve just described is the tensor product space. For more on
+tensors, see Jeremy Kun’s <a href="https://jeremykun.com/2014/01/17/how-to-conquer-tensorphobia/">How to Conquer Tensorphobia</a> and
+<a href="https://jeremykun.com/2016/03/28/tensorphobia-outer-product/">Tensorphobia and the Outer Product</a>. <a href="#fnref:tensors" class="reversefootnote">↩</a></p>
+    </li>
+    <li id="fn:covar-basis-independent">
+      <p>I like this because it shows that the covariance
+matrix represents an object that is coordinate-independent; it doesn’t just
+tell you the covariance between $x_i$ and $x_j$, which you can get by
+reading off the entries, but also the covariance between linear functions of
+$x$ that are not coordinate-aligned. <a href="#fnref:covar-basis-independent" class="reversefootnote">↩</a></p>
+    </li>
+    <li id="fn:pca">
+      <p>An example that comes to mind is <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA</a>. PCA cares about the
+Euclidean distances between the points, so it only makes sense when it would
+make to take dot products. In particular this means that if you apply an
+arbitrary scaling to some columns of your data, the result of PCA will be
+different! <a href="#fnref:pca" class="reversefootnote">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div><a class="u-url" href="/notes/math/2018/04/08/matrix-three-ways.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/notes/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/notes/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/notes/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/luanths" title="luanths"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/luanths" title="luanths"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
