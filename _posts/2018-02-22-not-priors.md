@@ -16,10 +16,8 @@ in the larger population.
 
 ![]({{ site.baseurl }}/images/PRML_Figure1.4d.png "Overfitting: the red curve is
 a 9th-order polynomial fit to the 9 data points in blue, which were generated
-according to the green curve. From Bishop's [Pattern Recognition and Machine
-Learning][prml].")
-
-[prml]: https://www.microsoft.com/en-us/research/people/cmbishop/#!prml-book
+according to the green curve. From Bishop's Pattern Recognition and Machine
+Learning.")
 
 Usually you add _regularization_, which means that you bias the training process
 to favor certain model parameters over others -- say, those which cause the model
@@ -28,7 +26,7 @@ to make smoother predictions.
 This sounds sort of like having a Bayesian prior over model parameters where the
 models which make smoother predictions have higher prior probability. And
 indeed, people often talk about it that way, for instance in scikit-learn's
-documentation for [ElasticNet](elasticnet).
+documentation for [ElasticNet][elasticnet].
 
 [elasticnet]: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html
 
