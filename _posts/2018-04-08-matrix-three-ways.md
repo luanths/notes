@@ -73,11 +73,7 @@ some rate determined by $\Sigma$.[^psd]
 If you have a $M$ which represents a linear map $\mathbb{R}^m \to \mathbb{R}^n$,
 you can "cast" it into a bilinear map: $u^T M v = u \cdot Mv$. That is, first
 apply the linear map to $v$ to get another vector $M v$, and then take the dot
-product of that with $u$.[^abstract-bilinear]
-
-[^abstract-bilinear]: The same construction works with abstract vector spaces:
-    if you have a linear map from $V$ to $W$, and $W$ is an inner product space,
-    you can use that to construct a bilinear map from $V$ and $W$.
+product of that with $u$.
 
 ## A matrix as a combination of outer products
 
@@ -90,18 +86,19 @@ the trace operator, but you can also see it by writing out the matrix products:
 
 [trace trick]: https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/other-readings/chapter13.pdf
 
-$$ u^T M v = \sum_{i,j} u_i M_{i,j} v_j = \sum_{i,j} M_{i,j} u_i v_j = \sum_{i,j} M_{i,j} (uv^T)_{i,j} $$_
+$$ u^T M v = \sum_{i,j} u_i M_{i,j} v_j = \sum_{i,j} M_{i,j} u_i v_j = \sum_{i,j} M_{i,j} (uv^T)_{i,j} $$
 
 This also makes it clear that $M$ acts *linearly* on the elements of $uv^T$.
 
 It is useful to consider the vector space that you get by allowing linear
-combinations of $uv^T$'s. A member of this space is a summary of one or more
-vector-pairs that lets you compute the sum of any bilinear function over those
-vector-pairs.[^tensors]
+combinations of $uv^T$'s, which one might call the tensor product
+space[^tensors]. A member of this space is a matrix that summarizes one or more
+vector-pairs for the purpose of computing the sum of any bilinear function over
+those vector-pairs.
 
-[^tensors]: What I've just described is the tensor product space. For more on
-    tensors, see Jeremy Kun's [How to Conquer Tensorphobia][tensorphobia1] and
-    [Tensorphobia and the Outer Product][tensorphobia2].
+[^tensors]: For more on tensors, see Jeremy Kun's [How to Conquer
+    Tensorphobia][tensorphobia1] and [Tensorphobia and the Outer
+    Product][tensorphobia2].
     
 [tensorphobia1]: https://jeremykun.com/2014/01/17/how-to-conquer-tensorphobia/
 [tensorphobia2]: https://jeremykun.com/2016/03/28/tensorphobia-outer-product/
