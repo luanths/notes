@@ -5,7 +5,6 @@ description: There is more to being Bayesian than having a term called "prior" i
 categories: [probability]
 title: Regularizers are not priors
 ---
-# Regularizers are not priors
 
 In machine learning, the typical setup is that you have a model with some
 trainable parameters, and you have some training data, and you fit the model's
