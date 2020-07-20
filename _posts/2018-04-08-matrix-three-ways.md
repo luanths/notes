@@ -1,5 +1,6 @@
 ---
 toc: true
+comments: true
 layout: post
 description: A matrix can represent a linear map, but it can also do other things.
 categories: [math]

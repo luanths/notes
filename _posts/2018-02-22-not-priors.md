@@ -1,5 +1,6 @@
 ---
 toc: false
+comments: true
 layout: post
 description: There is more to being Bayesian than having a term called "prior" in your loss function.
 categories: [probability]
