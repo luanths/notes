@@ -195,19 +195,26 @@ doesn't have a physical meaning and is hardly ever talked about, as if the
 operator exists only to be a bag of eigenstates.
 
 However, the expectation value of $A$ in the state $\psi$ is $\langle \psi | A |
-\psi \rangle$ (which is basically $\psi^T A \psi$ in physicists' notation). So,
+\psi \rangle$ (which is basically physicist's notation for $\psi^T A \psi$). So,
 maybe another way to think of $A$ is as a bilinear map, which when applied to a
-quantum state gives the probability distribution of the observable in that state?
+quantum state gives the expected value of the observable in that state?[^weird]
+
+[^weird]: There is one weird part of this interpretation: we've defined the
+    expected value of an observable in every state, but not its whole
+    distribution in any state. I think you could fix that by having the bilinear
+    map $A$ return the whole probability vector of the observable, rather than
+    just the expected value.
 
 If you have an eigendecomposition of $A$, then you can represent any quantum
-state as a linear combination of eigenstates, so that the distribution of the
-observable in that state is a linear combination of its distribution in each
+state as a linear combination of eigenstates, so that the expected value of the
+observable in that state is a linear combination of its expected value in each
 eigenstate. This explains why eigenstates are important.
 
 This also explains why you want to work with density matrices. The density
 matrix corresponding to $\psi$ is $| \psi \rangle \langle \psi |$, which is just
 the outer product of $\psi$ with itself. As we've seen, this is enough
-information to determine the distribution of any observable $A$. In density
+information to determine the expected value of any observable $A$. In density
 matrix land, you can take linear combinations of pure states to represent mixed
-states, and in a mixed state the distribution of any observable factors through
-as a linear combination of its distribution in each of the pure states.
+states, and in a mixed state the expected value of any observable factors
+through as a linear combination of its expected value in each of the pure
+states.
