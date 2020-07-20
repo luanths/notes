@@ -133,9 +133,9 @@ Matrix multiplication:
 
 Transpose:
 
-* If $A$ is a linear map from $U$ to $V$, $A^T$ is a linear map from $V^*$ to
-  $U^*$, where $V^*$ is the dual vector space of $V$: the space of linear maps
-  from $V$ to scalars.
+* If $A$ is a linear map from $U$ to $V$, $A^T$ is a linear map from $V^\*$ to
+  $U^\*$, where $V^\*$ is the dual vector space of $V$: the space of linear maps
+  $V \to \mathbb{R}$.
 
 * If $A$ is a bilinear map, $A^T$ is the bilinear map you get by switching the
   arguments. If $A$ is a symmetric matrix, its bilinear map is a symmetric
