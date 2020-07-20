@@ -197,7 +197,7 @@ operator exists only to be a bag of eigenstates.
 However, the expectation value of $A$ in the state $\psi$ is $\langle \psi | A |
 \psi \rangle$ (which is basically physicist's notation for $\psi^T A \psi$). So,
 maybe another way to think of $A$ is as a bilinear map, which when applied to a
-quantum state gives the expected value of the observable in that state?[^weird]
+quantum state gives the expected value[^weird] of the observable in that state?
 
 [^weird]: There is one weird part of this interpretation: we've defined the
     expected value of an observable in every state, but not its whole
