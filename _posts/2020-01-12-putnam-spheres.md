@@ -8,7 +8,7 @@ title: Putnam spheres
 ---
 
 [Putnam][putnam] 2019 A4 asks if there exists a function f(x, y, z) from
-$\mathbf{R}^3$ to $\mathbf{R}$, that integrates to zero over the surface of
+3-dimensional space to the reals, that integrates to zero over the surface of
 every unit sphere, but is not identically zero.
 
 [putnam]: https://www.maa.org/math-competitions/putnam-competition
