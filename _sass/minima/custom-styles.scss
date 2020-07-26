@@ -9,3 +9,12 @@
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
 @import "minima/fastpages-dracula-highlight"; 
+
+.page-content {
+    font-family: "Merriweather", serif !important;
+}
+
+pre {
+    font-family: "Inconsolata", monospace;
+    font-size: 20px;
+}
