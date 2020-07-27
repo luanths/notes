@@ -3,7 +3,7 @@ toc: false
 comments: true
 layout: post
 description:
-categories: [programming]
+categories: [ml]
 title: Named tensors and labeled arrays
 ---
 
