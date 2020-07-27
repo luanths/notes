@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://luanths.github.io/notes/probability/2018/02/22/not-priors.html</loc>
+<loc>https://luanths.github.io/notes/probability/ml/2018/02/22/not-priors.html</loc>
 <lastmod>2018-02-22T00:00:00-06:00</lastmod>
 </url>
 <url>
@@ -25,7 +25,7 @@
 <lastmod>2018-12-15T00:00:00-06:00</lastmod>
 </url>
 <url>
-<loc>https://luanths.github.io/notes/programming/2019/01/14/namedtensor.html</loc>
+<loc>https://luanths.github.io/notes/ml/2019/01/14/namedtensor.html</loc>
 <lastmod>2019-01-14T00:00:00-06:00</lastmod>
 </url>
 <url>
