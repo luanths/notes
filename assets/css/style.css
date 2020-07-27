@@ -488,4 +488,6 @@ table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 pre, code { font-family: "Inconsolata", monospace !important; font-size: 20px !important; }
 
+.katex-display, .MJXc-display { font-size: 20px !important; }
+
 /*# sourceMappingURL=style.css.map */
