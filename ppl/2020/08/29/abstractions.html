@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Links on computational abstractions | Lu’s Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Links on computational abstractions" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Monad tutorial not included" />
+<meta property="og:description" content="Monad tutorial not included" />
+<link rel="canonical" href="https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html" />
+<meta property="og:url" content="https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html" />
+<meta property="og:site_name" content="Lu’s Notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-29T00:00:00-05:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html"},"description":"Monad tutorial not included","@type":"BlogPosting","url":"https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html","headline":"Links on computational abstractions","dateModified":"2020-08-29T00:00:00-05:00","datePublished":"2020-08-29T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/notes/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://luanths.github.io/notes/feed.xml" title="Lu's Notes" /><link rel="shortcut icon" type="image/x-icon" href="/notes/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Links on computational abstractions | Lu’s Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Links on computational abstractions" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Monad tutorial not included" />
+<meta property="og:description" content="Monad tutorial not included" />
+<link rel="canonical" href="https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html" />
+<meta property="og:url" content="https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html" />
+<meta property="og:site_name" content="Lu’s Notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-29T00:00:00-05:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html"},"description":"Monad tutorial not included","@type":"BlogPosting","url":"https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html","headline":"Links on computational abstractions","dateModified":"2020-08-29T00:00:00-05:00","datePublished":"2020-08-29T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Merriweather"><link type="application/atom+xml" rel="alternate" href="https://luanths.github.io/notes/feed.xml" title="Lu's Notes" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/notes/">Lu&#39;s Notes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/notes/about/">About Me</a><a class="page-link" href="/notes/search/">Search</a><a class="page-link" href="/notes/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Links on computational abstractions</h1><p class="page-description">Monad tutorial not included</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-08-29T00:00:00-05:00" itemprop="datePublished">
+        Aug 29, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/notes/categories/#ppl">ppl</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Here are some links relating to a few different threads I’ve been thinking about
+lately, which for me tie into a common theme of “functional programming
+abstractions on which to build a probabilistic modeling language”.</p>
+
+<h2 id="algebraic-effects">Algebraic effects</h2>
+
+<p><a href="https://www.janestreet.com/tech-talks/effective-programming/">Adding an Effect System to OCaml</a> (video). I had seen this talk
+before but had since forgotten the idea of algebraic effects, so I read up on
+them again. My one-sentence summary: effects are like resumable exceptions that
+are tracked by the type system.</p>
+
+<p>I’ve worked with OCaml code that uses monads to model effects, so I was
+interested in how that compares to this kind of effect system. (Sorry, I’m not
+going to explain monads here.) It seems to me that the behaviors that can be
+implemented with effects are a subset of those that can be implemented with
+monads: those where each piece of code is run at most once. The upshot is that
+effect handling can be implemented efficiently in the compiler, without
+allocating many intermediate closures like monadic code tends to do.</p>
+
+<p>The other benefit is that different effect types can be mixed with each other
+and with non-effectful functions more easily. This is basically the same idea
+as <a href="http://okmij.org/ftp/Haskell/extensible/">Freer Monads and Extensible Effects</a>.</p>
+
+<p>Also interesting: <a href="https://twitter.com/sigfpe/status/1296196451152703488?s=20">Algebraic effect handling in numerical Python with Jax</a>.</p>
+
+<p>Effect handling is one approach for implementing inference operations that
+operate on probabilistic programs. As one example, <a href="http://pyro.ai/examples/effect_handlers.html">Pyro is implemented with
+effect handlers</a> in a limited form.</p>
+
+<h2 id="build-systems-and-incremental-computation">Build systems and incremental computation</h2>
+
+<p><a href="http://neugierig.org/software/blog/2020/05/ninja.html">The Success and Failure of Ninja</a> (blog post). This is an interesting
+retrospective on maintaining a popular software project. Most of it is not too
+related to the other stuff I’m putting together here, except as a link to…</p>
+
+<p><a href="https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems-final.pdf">Build Systems à la Carte</a> (2018 paper). I’d read this paper
+before: it inspired the design of a library for describing incremental
+computation graphs that I’ve worked with in my day job.</p>
+
+<p>The main idea is that a computation graph is described by a set of keys, and a
+function that takes a key and builds a value associated with that key given a
+way to build its dependencies. In the paper, this is called a “task
+description”.</p>
+
+<p>A build system is an implementation of a function that takes a task description
+and uses it to update a persistent key-value store. The rest of the paper
+compares different build systems viewed in this way.</p>
+
+<h2 id="incremental-state-machines-and-the-arrow-calculus">Incremental state machines and the arrow calculus</h2>
+
+<p><a href="https://github.com/janestreet/bonsai">Bonsai</a> is an OCaml web framework developed by Jane Street based on the
+idea of components as incremental state machines.</p>
+
+<p>Bonsai’s API has gone through a few interesting evolutions, the latest iteration
+of which is something called <a href="https://github.com/janestreet/bonsai/blob/master/docs/proc.md">Bonsai.Proc</a>. The story is this: Bonsai’s
+primary abstraction is the <em>arrow</em>, which is like a monad, but with more
+restricted control flow allowing for more static analysis. However, the Bonsai
+team found that arrow combinators are a bad API, so they found a way to mostly
+get rid of them.</p>
+
+<p>The proc API is inspired by the <a href="http://homepages.inf.ed.ac.uk/slindley/papers/arrow-calculus.pdf">Arrow Calculus</a> (2010 paper),
+an equivalent formulation of arrows that enables composition using lambda-like
+abstractions rather than combinators. The result is something that is nicer to
+program with and similar to a monad interface.</p>
+
+<p>Incidentally, the <a href="https://dune.build/">Dune build system</a> also used to use an arrow
+abstraction internally, and they <em>also</em> dropped the arrow combinators in favor
+of <a href="https://www.staff.ncl.ac.uk/andrey.mokhov/selective-functors.pdf">a different abstraction</a>. I guess there is a good reason
+that arrows haven’t caught on very much even in functional programming.</p>
+
+<p>Anyway, I’m interested in Bonsai because the core abstraction – of composable
+building blocks that maintain their own internal state and implement incremental
+computations – is very similar to the feature set we were aiming for in my
+previous work on probabilistic programming interfaces. I’d like to explore the
+idea of a “probabilistic component” framework for composing models and inference
+algorithms.</p>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="luanths/notes"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/notes/ppl/2020/08/29/abstractions.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/notes/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/notes/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/notes/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/luanths" title="luanths"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/luanths" title="luanths"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

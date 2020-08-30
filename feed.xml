@@ -1,4 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://luanths.github.io/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="https://luanths.github.io/notes/" rel="alternate" type="text/html" /><updated>2020-07-26T20:54:36-05:00</updated><id>https://luanths.github.io/notes/feed.xml</id><title type="html">Lu’s Notes</title><entry><title type="html">Two probabilistic programming links</title><link href="https://luanths.github.io/notes/ppl/2020/07/26/ppl-links.html" rel="alternate" type="text/html" title="Two probabilistic programming links" /><published>2020-07-26T00:00:00-05:00</published><updated>2020-07-26T00:00:00-05:00</updated><id>https://luanths.github.io/notes/ppl/2020/07/26/ppl-links</id><content type="html" xml:base="https://luanths.github.io/notes/ppl/2020/07/26/ppl-links.html">&lt;p&gt;A preprint from my former lab: &lt;a href=&quot;https://arxiv.org/abs/2007.09871&quot;&gt;Automating Involutive MCMC using Probabilistic
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://luanths.github.io/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="https://luanths.github.io/notes/" rel="alternate" type="text/html" /><updated>2020-08-30T12:25:54-05:00</updated><id>https://luanths.github.io/notes/feed.xml</id><title type="html">Lu’s Notes</title><entry><title type="html">Links on computational abstractions</title><link href="https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html" rel="alternate" type="text/html" title="Links on computational abstractions" /><published>2020-08-29T00:00:00-05:00</published><updated>2020-08-29T00:00:00-05:00</updated><id>https://luanths.github.io/notes/ppl/2020/08/29/abstractions</id><content type="html" xml:base="https://luanths.github.io/notes/ppl/2020/08/29/abstractions.html">&lt;p&gt;Here are some links relating to a few different threads I’ve been thinking about
+lately, which for me tie into a common theme of “functional programming
+abstractions on which to build a probabilistic modeling language”.&lt;/p&gt;
+
+&lt;h2 id=&quot;algebraic-effects&quot;&gt;Algebraic effects&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.janestreet.com/tech-talks/effective-programming/&quot;&gt;Adding an Effect System to OCaml&lt;/a&gt; (video). I had seen this talk
+before but had since forgotten the idea of algebraic effects, so I read up on
+them again. My one-sentence summary: effects are like resumable exceptions that
+are tracked by the type system.&lt;/p&gt;
+
+&lt;p&gt;I’ve worked with OCaml code that uses monads to model effects, so I was
+interested in how that compares to this kind of effect system. (Sorry, I’m not
+going to explain monads here.) It seems to me that the behaviors that can be
+implemented with effects are a subset of those that can be implemented with
+monads: those where each piece of code is run at most once. The upshot is that
+effect handling can be implemented efficiently in the compiler, without
+allocating many intermediate closures like monadic code tends to do.&lt;/p&gt;
+
+&lt;p&gt;The other benefit is that different effect types can be mixed with each other
+and with non-effectful functions more easily. This is basically the same idea
+as &lt;a href=&quot;http://okmij.org/ftp/Haskell/extensible/&quot;&gt;Freer Monads and Extensible Effects&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Also interesting: &lt;a href=&quot;https://twitter.com/sigfpe/status/1296196451152703488?s=20&quot;&gt;Algebraic effect handling in numerical Python with Jax&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Effect handling is one approach for implementing inference operations that
+operate on probabilistic programs. As one example, &lt;a href=&quot;http://pyro.ai/examples/effect_handlers.html&quot;&gt;Pyro is implemented with
+effect handlers&lt;/a&gt; in a limited form.&lt;/p&gt;
+
+&lt;h2 id=&quot;build-systems-and-incremental-computation&quot;&gt;Build systems and incremental computation&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://neugierig.org/software/blog/2020/05/ninja.html&quot;&gt;The Success and Failure of Ninja&lt;/a&gt; (blog post). This is an interesting
+retrospective on maintaining a popular software project. Most of it is not too
+related to the other stuff I’m putting together here, except as a link to…&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/en-us/research/uploads/prod/2018/03/build-systems-final.pdf&quot;&gt;Build Systems à la Carte&lt;/a&gt; (2018 paper). I’d read this paper
+before: it inspired the design of a library for describing incremental
+computation graphs that I’ve worked with in my day job.&lt;/p&gt;
+
+&lt;p&gt;The main idea is that a computation graph is described by a set of keys, and a
+function that takes a key and builds a value associated with that key given a
+way to build its dependencies. In the paper, this is called a “task
+description”.&lt;/p&gt;
+
+&lt;p&gt;A build system is an implementation of a function that takes a task description
+and uses it to update a persistent key-value store. The rest of the paper
+compares different build systems viewed in this way.&lt;/p&gt;
+
+&lt;h2 id=&quot;incremental-state-machines-and-the-arrow-calculus&quot;&gt;Incremental state machines and the arrow calculus&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/janestreet/bonsai&quot;&gt;Bonsai&lt;/a&gt; is an OCaml web framework developed by Jane Street based on the
+idea of components as incremental state machines.&lt;/p&gt;
+
+&lt;p&gt;Bonsai’s API has gone through a few interesting evolutions, the latest iteration
+of which is something called &lt;a href=&quot;https://github.com/janestreet/bonsai/blob/master/docs/proc.md&quot;&gt;Bonsai.Proc&lt;/a&gt;. The story is this: Bonsai’s
+primary abstraction is the &lt;em&gt;arrow&lt;/em&gt;, which is like a monad, but with more
+restricted control flow allowing for more static analysis. However, the Bonsai
+team found that arrow combinators are a bad API, so they found a way to mostly
+get rid of them.&lt;/p&gt;
+
+&lt;p&gt;The proc API is inspired by the &lt;a href=&quot;http://homepages.inf.ed.ac.uk/slindley/papers/arrow-calculus.pdf&quot;&gt;Arrow Calculus&lt;/a&gt; (2010 paper),
+an equivalent formulation of arrows that enables composition using lambda-like
+abstractions rather than combinators. The result is something that is nicer to
+program with and similar to a monad interface.&lt;/p&gt;
+
+&lt;p&gt;Incidentally, the &lt;a href=&quot;https://dune.build/&quot;&gt;Dune build system&lt;/a&gt; also used to use an arrow
+abstraction internally, and they &lt;em&gt;also&lt;/em&gt; dropped the arrow combinators in favor
+of &lt;a href=&quot;https://www.staff.ncl.ac.uk/andrey.mokhov/selective-functors.pdf&quot;&gt;a different abstraction&lt;/a&gt;. I guess there is a good reason
+that arrows haven’t caught on very much even in functional programming.&lt;/p&gt;
+
+&lt;p&gt;Anyway, I’m interested in Bonsai because the core abstraction – of composable
+building blocks that maintain their own internal state and implement incremental
+computations – is very similar to the feature set we were aiming for in my
+previous work on probabilistic programming interfaces. I’d like to explore the
+idea of a “probabilistic component” framework for composing models and inference
+algorithms.&lt;/p&gt;</content><author><name></name></author><summary type="html">Here are some links relating to a few different threads I’ve been thinking about lately, which for me tie into a common theme of “functional programming abstractions on which to build a probabilistic modeling language”.</summary></entry><entry><title type="html">Two probabilistic programming links</title><link href="https://luanths.github.io/notes/ppl/2020/07/26/ppl-links.html" rel="alternate" type="text/html" title="Two probabilistic programming links" /><published>2020-07-26T00:00:00-05:00</published><updated>2020-07-26T00:00:00-05:00</updated><id>https://luanths.github.io/notes/ppl/2020/07/26/ppl-links</id><content type="html" xml:base="https://luanths.github.io/notes/ppl/2020/07/26/ppl-links.html">&lt;p&gt;A preprint from my former lab: &lt;a href=&quot;https://arxiv.org/abs/2007.09871&quot;&gt;Automating Involutive MCMC using Probabilistic
 and Differentiable Programming&lt;/a&gt;. Involutive MCMC is a recently introduced
 framework that expresses various common MCMC algorithms as instances of a common
 pattern. The authors show how this pattern is supported as a probabilistic
@@ -2737,150 +2812,4 @@ AAAAJal0b28AAAAdZGF0YQAAAAEAAAAATGF2ZjU3LjgzLjEwMA==
 &lt;/div&gt;
     
 
-&lt;/div&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Entropy is relative</title><link href="https://luanths.github.io/notes/probability/2018/02/27/entropy.html" rel="alternate" type="text/html" title="Entropy is relative" /><published>2018-02-27T00:00:00-06:00</published><updated>2018-02-27T00:00:00-06:00</updated><id>https://luanths.github.io/notes/probability/2018/02/27/entropy</id><content type="html" xml:base="https://luanths.github.io/notes/probability/2018/02/27/entropy.html">&lt;p&gt;The entropy of a random quantity $X$ is the “amount of uncertainty” or
-“information content” in $X$. It is defined as:&lt;/p&gt;
-
-&lt;span class=&quot;katex-display&quot;&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mi&gt;log&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;H(X) = -E[ \log P(X) ]&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.08125em;&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.07847em;&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;−&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.05764em;&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;lo&lt;span style=&quot;margin-right:0.01389em;&quot;&gt;g&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.16666666666666666em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.13889em;&quot;&gt;P&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.07847em;&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-
-&lt;p&gt;It’s the average number of bits you need to specify the value of $X$ if you know
-its distribution, or equivalently, the average number of random bits you need to
-generate a sample of $X$.&lt;/p&gt;
-
-&lt;p&gt;This makes sense for discrete-valued $X$, like coin flips and letters in English
-text. But what about continuous distributions? What is the entropy of a normal
-distribution?&lt;/p&gt;
-
-&lt;p&gt;This post is to try to make sense of this.&lt;/p&gt;
-
-&lt;h2 id=&quot;infinity&quot;&gt;Infinity?&lt;/h2&gt;
-
-&lt;p&gt;If you think about it, the entropy of a continuous distribution ought to be
-infinite. After all, a draw from a normal distribution is a real number which
-requires an infinite number of digits to describe.&lt;/p&gt;
-
-&lt;p&gt;But this isn’t very useful. Somehow a normal distribution with variance 1 seems
-less uncertain than a normal distribution with variance 2, and we’d like to
-capture that.&lt;/p&gt;
-
-&lt;h2 id=&quot;differential-entropy&quot;&gt;Differential entropy&lt;/h2&gt;
-
-&lt;p&gt;A first idea is to just reuse the usual definition of entropy, but with
-probability density instead of mass:&lt;/p&gt;
-
-&lt;span class=&quot;katex-display&quot;&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;h&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mi&gt;log&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;h(X) = -E[ \log p(X) ]&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.07847em;&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;−&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.05764em;&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;lo&lt;span style=&quot;margin-right:0.01389em;&quot;&gt;g&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.16666666666666666em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.07847em;&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-
-&lt;p&gt;But this is kind of fishy. Probability density can be greater than 1, so $h(X)$
-can go negative. Also, the density has units of $1/dx$, but we’re taking the log
-of it? It turns out that we’ve actually defined the &lt;a href=&quot;https://en.wikipedia.org/wiki/Differential_entropy&quot;&gt;differential
-entropy&lt;/a&gt;, which sort of looks like entropy but doesn’t have all the
-properties we like.&lt;/p&gt;
-
-&lt;h2 id=&quot;relative-entropy&quot;&gt;Relative entropy&lt;/h2&gt;
-
-&lt;p&gt;Better is the idea of relative entropy (also called &lt;a href=&quot;https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence&quot;&gt;KL divergence&lt;/a&gt;). If we
-have a reference distribution with density $q$, then the relative entropy with
-respect to $q$ is &lt;sup id=&quot;fnref:nonstandard&quot;&gt;&lt;a href=&quot;#fn:nonstandard&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;span class=&quot;katex-display&quot;&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;H&lt;/mi&gt;&lt;mi&gt;q&lt;/mi&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mi&gt;log&lt;/mi&gt;&lt;mo&gt;⁡&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mi&gt;q&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;H_q(X) = -E[ \log \frac{p(X)}{q(X)} ]&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1.036108em;vertical-align:-0.286108em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.08125em;&quot;&gt;H&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.15139200000000003em;&quot;&gt;&lt;span style=&quot;top:-2.5500000000000003em;margin-left:-0.08125em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mathdefault mtight&quot; style=&quot;margin-right:0.03588em;&quot;&gt;q&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.286108em;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.07847em;&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:2.363em;vertical-align:-0.936em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;−&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.05764em;&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mop&quot;&gt;lo&lt;span style=&quot;margin-right:0.01389em;&quot;&gt;g&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.16666666666666666em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mopen nulldelimiter&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mfrac&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:1.427em;&quot;&gt;&lt;span style=&quot;top:-2.314em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.03588em;&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.07847em;&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;top:-3.23em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;frac-line&quot; style=&quot;border-bottom-width:0.04em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;top:-3.677em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.07847em;&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.936em;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mclose nulldelimiter&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-
-&lt;p&gt;The thing in the log is a ratio of densities, so it’s unitless; at least that
-checks out. And if you let $q$ be a general measure rather than a distribution,
-both discrete entropy and differential entropy are special cases of relative
-entropy (when $q$ is the counting measure or the Lebesgue measure,
-respectively).&lt;/p&gt;
-
-&lt;p&gt;But what does it mean? Relative entropy sometimes described as “the difference
-between the number of bits to encode $X$ using a code optimized for $q$ and a
-code optimized for $p$,” but that never made as much sense to me as the
-intuition for regular entropy does.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-connection&quot;&gt;The connection&lt;/h2&gt;
-
-&lt;p&gt;To that end, I found it helpful to think back to regular entropy, interpreting
-it as the number of random bits you need to sample from the distribution of $X$.&lt;/p&gt;
-
-&lt;p&gt;How many bits do you need to sample from a continuous distribution? As I
-mentioned earlier it’s technically infinity, but no one is going to look at a
-whole infinite-precision real number anyway. Instead we can ask how many bits
-are needed to generate $X$ up to $n$ digits of precision.&lt;/p&gt;
-
-&lt;p&gt;For now let’s imagine $X$ takes on values from $[0, 1)$, so we can easily
-represent it as a sequence of binary digits. Then the first $n$ digits is just a
-binary string, so it has a well defined entropy.&lt;/p&gt;
-
-&lt;p&gt;In general this entropy will depend on $n$ in some messy way. But if $X$ has a
-continuous density, after some point the remaining digits will all be close to
-uniform, so each additional digit will require an additional random bit. In the
-limit of large $n$, the number of bits we need will approach $h(X) + n$.&lt;/p&gt;
-
-&lt;p&gt;Restating this a bit, we can say that the differential entropy $h(X)$ is the
-number of bits you need to generate $X$ to the precision of an interval of
-length $2^{-n}$, minus the number of bits you would need to specify that
-interval in binary, which is $n$. Cool.&lt;/p&gt;
-
-&lt;p&gt;But notice that we’re implicitly using Lebesgue measure here when we talk about
-interval length and digits of precision. So we can generalize this to relative
-entropy with respect to any reference measure $q$: it’s the number of bits you
-need to generate $X$ to the precision a set of measure $2^{-n}$ as measured by
-$q$.&lt;/p&gt;
-
-&lt;p&gt;And now we see that we get regular entropy back when $q$ is the counting
-measure! If we generate $X$ to within a set of counting measure 1, then we’ve
-generated $X$ exactly.&lt;/p&gt;
-
-&lt;h2 id=&quot;maximum-entropy-is-relative&quot;&gt;Maximum entropy is relative&lt;/h2&gt;
-
-&lt;p&gt;The maximum entropy distribution is the uniform distribution, because it
-represents the least state of knowledge about $X$, the state of maximum
-ignorance. Or is it?&lt;/p&gt;
-
-&lt;p&gt;It turns out that the distribution which maximizes relative entropy with respect
-to $q$ is the one where $p(x)$ is proportional to $q(x)$.&lt;sup id=&quot;fnref:proportional&quot;&gt;&lt;a href=&quot;#fn:proportional&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; So the
-uniform distribution is max entropy only because we’re using a uniform reference
-measure.&lt;/p&gt;
-
-&lt;p&gt;This also solves a puzzle of how the &lt;a href=&quot;https://en.wikipedia.org/wiki/Principle_of_maximum_entropy&quot;&gt;maximum-entropy principle&lt;/a&gt; works
-with change of variables. Example: Suppose you have a coin that lands heads with
-probability $p$, and you want a prior on $p$. You have no idea, so you assign it
-the uniform distribution over $[0, 1]$, because it’s the maximum entropy
-distribution. But what if you instead wanted a prior on $\theta = \log p$
-instead? You don’t know anything about $\theta$ either, so you ought to assign
-$\theta$ a maximum entropy uniform distribution over $(-\infty, 0]$. But that is
-a different distribution from the one that makes $p$ uniform, so what gives?&lt;/p&gt;
-
-&lt;p&gt;The answer is that you have to fix a reference measure for $p$, which can be
-either uniform in linear space or log space but not both. The maximum entropy
-principle can’t help you decide.&lt;/p&gt;
-
-&lt;p&gt;Even in the discrete case, there’s a version of this reference measure problem
-when it’s not clear how to define the set of possible values of a categorical
-variable. The uniform categorical distribution depends on what the categories
-are, and categories are made by people.&lt;/p&gt;
-
-&lt;h2 id=&quot;a-word-on-thermodynamic-entropy&quot;&gt;A word on thermodynamic entropy&lt;/h2&gt;
-
-&lt;p&gt;Thermodynamic entropy sure doesn’t seem relative. It’s measured in units like
-joules per kelvin and it seems to have real physical consequences, like the fact
-that you can’t un-fry an egg. But thermodynamical entropy is supposed to be
-related to information entropy; can we fit it into the above picture?&lt;/p&gt;
-
-&lt;p&gt;As far as I can tell, everything in statistical mechanics depends on the
-assumption (axiom?) that all microstates of an &lt;a href=&quot;https://ocw.mit.edu/courses/physics/8-044-statistical-physics-i-spring-2013/readings-notes-slides/MIT8_044S13_mcrocanoncl.pdf&quot;&gt;isolated system in
-equilibrium&lt;/a&gt; are equally probable. That’s a reference measure!&lt;/p&gt;
-
-&lt;p&gt;So I think you could say the second law of thermodynamics is really about the
-&lt;em&gt;relative&lt;/em&gt; entropy of the universe, with respect to the reference distribution
-that is uniform over all microstates.&lt;/p&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:nonstandard&quot;&gt;
-      &lt;p&gt;This definition is non-standard; relative entropy is usually
-defined as the negative of the above and spelled $D(p \Vert q)$ or $KL(p
-\Vert q)$. I defined it this way to draw a stronger analogy to the
-definition of entropy. &lt;a href=&quot;#fnref:nonstandard&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:proportional&quot;&gt;
-      &lt;p&gt;More technically, $p$ has a uniform density with respect to the measure $q$. &lt;a href=&quot;#fnref:proportional&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name></name></author><summary type="html">The entropy of a random quantity $X$ is the “amount of uncertainty” or “information content” in $X$. It is defined as:</summary></entry></feed>
+&lt;/div&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
