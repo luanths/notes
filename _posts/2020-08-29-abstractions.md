@@ -63,13 +63,13 @@ function that takes a key and builds a value associated with that key given a
 way to build its dependencies. In the paper, this is called a "task
 description".
 
-A build system is an implementation of a function that takes a task description
-and uses it to update a persistent key-value store. The rest of the paper
-compares different build systems viewed in this way.
+A build system implements a function that takes a task description and uses it
+to update a persistent key-value store. The rest of the paper compares different
+build systems viewed in this way.
 
 ## Incremental state machines and the arrow calculus
 
-[Bonsai][bonsai] is an OCaml web framework developed by Jane Street based on the
+[Bonsai][bonsai] is an OCaml web framework developed at Jane Street based on the
 idea of components as incremental state machines.
 
 [bonsai]: https://github.com/janestreet/bonsai
