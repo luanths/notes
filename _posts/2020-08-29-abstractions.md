@@ -68,10 +68,10 @@ to update a persistent key-value store. The rest of the paper compares different
 build systems viewed in this way.
 
 I'm interested in the task description in its own right as an abstraction for
-computational graphs. I think something similar to that, where you have a
-mapping from keys to expressions that can depend on other keys using an
-applicative interface, could be the basis for an embedded DSL for writing
-probabilistic graphical models.
+describing computational graphs. I think the idea of having a mapping from keys
+to expressions, where the expressions can depend on other keys using an
+applicative interface, could be the basis for an embedded DSL for probabilistic
+graphical models.
 
 ## Incremental state machines and the arrow calculus
 
