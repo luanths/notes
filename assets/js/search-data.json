@@ -2,10 +2,10 @@
   
     
         "post0": {
-            "title": "Links: Bayes talk",
-            "content": "Over the weekend I caught up on a small backlog of talk videos I had bookmarked. They were all pretty interesting, so I figured I’d share: . Bayesian Deep Learning and Probabilistic Model Construction (Andrew Gordon Wilson, ICML 2020) . Bayesian Inference without Probability Density Functions (Ben Goodrich, StanCon 2020) . A biased tour of the uncertainty visualization zoo (Matthew Kay, Tapestry 2018) .",
-            "url": "https://luanths.github.io/notes/ml/2020/08/31/talks.html",
-            "relUrl": "/ml/2020/08/31/talks.html",
+            "title": "Bayes links",
+            "content": "Update: I’ve consolidated and added more links. . Here are some probabilistic-modeling-adjacent materials I’ve recently found interesting. No particular order or unifying theme here. . Bayesian Deep Learning and Probabilistic Model Construction (video), Andrew Gordon Wilson, ICML 2020. Also, The Case for Bayesian Deep Learning. . | Principled Model Building Workflow, Michael Betancourt. Actually, all of his case studies are illuminating. . | A biased tour of the uncertainty visualization zoo (video), Matthew Kay, Tapestry 2018. . | Bayesian Inference without Probability Density Functions (video), Ben Goodrich, StanCon 2020. . | Measure Theory for Probabilistic Modeling, Chad Scherrer. . | Example of Using Bayesian Decision Making to Optimize Supply Chains, Thomas Wiecki. . | Comparing Dirichlet Process Gaussian mixture model in various PPLs. . | .",
+            "url": "https://luanths.github.io/notes/ml/2020/08/31/bayes-links.html",
+            "relUrl": "/ml/2020/08/31/bayes-links.html",
             "date": " • Aug 31, 2020"
         }
         
@@ -24,8 +24,8 @@
   
     
         ,"post2": {
-            "title": "Two probabilistic programming links",
-            "content": "A preprint from my former lab: Automating Involutive MCMC using Probabilistic and Differentiable Programming. Involutive MCMC is a recently introduced framework that expresses various common MCMC algorithms as instances of a common pattern. The authors show how this pattern is supported as a probabilistic programming abstraction in Gen, allowing users to write customized inference algorithms for probabilistic models while automating the error-prone parts and providing free invariant checks. . Also: a comparison and benchmark of Dirichlet Process Gaussian mixture model in various PPLs. .",
+            "title": "Involutive MCMC",
+            "content": "A preprint from my former lab: Automating Involutive MCMC using Probabilistic and Differentiable Programming. Involutive MCMC is a recently introduced framework that expresses various common MCMC algorithms as instances of a common pattern. The authors show how this pattern is supported as a probabilistic programming abstraction in Gen, allowing users to write customized inference algorithms for probabilistic models while automating the error-prone parts and providing free invariant checks. .",
             "url": "https://luanths.github.io/notes/ppl/2020/07/26/ppl-links.html",
             "relUrl": "/ppl/2020/07/26/ppl-links.html",
             "date": " • Jul 26, 2020"
